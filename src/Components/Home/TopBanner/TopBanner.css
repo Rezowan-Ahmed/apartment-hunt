@@ -1,0 +1,7 @@
+.top-banner{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url('../../../images/images/Rectangle\ 13.png');
+    background-size: cover;
+    color: #efefef!important;
+    padding-top: 80px;
+    padding-bottom: 245px;
+}

@@ -1,0 +1,15 @@
+footer{
+    background-color: #275A53;
+    color: #ffff!important;
+}
+footer .nav-link{
+    color: #ffff!important;
+}
+.details{
+    font-weight: bold;
+}
+.social-icon{
+    margin-left: 10px;
+    font-size: 25px;
+    color: #ffff!important;
+}

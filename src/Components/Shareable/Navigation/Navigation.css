@@ -1,0 +1,14 @@
+.navbar-brand img{
+    height: 60px;
+}
+.navStyle{
+    margin-left: 30px;
+}
+.nav-link{
+    font-weight: 600;
+    margin-right: 10px;
+}
+.active{
+   /* border-bottom: 5px solid red; */
+   color: #275A53!important;
+}
