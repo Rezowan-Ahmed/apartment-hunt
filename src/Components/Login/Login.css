@@ -23,19 +23,7 @@
 .user-form .input-field::placeholder{
     color: rgb(85, 84, 84);
 }
-.submit-btn{
-    background-color: #275A53 !important;
-    border: 2px solid #275A53 !important;
-    padding: 6px 20px;
-    color: black!important;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.5s all;
-}
-.submit-btn:hover{
-    background: none !important;
-    color: #000!important;
-}
+
 .user-form p{
     color: black;
     text-align: center;
@@ -66,12 +54,13 @@
     border-radius: 25px;
     transition: 0.5s all;
     border: none;
+    color: #0000;
     border: 2px solid #cdcdcd;
     text-align: center;
 }
 .other-signIn-method .facebook:hover, .google:hover{
     background-color: #275A53;
-    color: #fff!important;
+    color: white!important;
 }
 .facebook img{
     height: 34px;

@@ -1,19 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import firebase from "firebase/app";
 
-import googelIcon from '../../images/logos/Group 2.png'
-import fbIcon from '../../images/logos/Group 573.png'
+import fbIcon from '../../images/logos/Group 2.png'
+import googelIcon from '../../images/logos/Group 573.png'
 import { userContext } from '../../App';
 import './Login.css'
 import { createLoginFreamwork, handleGoogleSignIn, handleSignOut, handleFbSignIn, createUserWithEmailPassword, signInWithEmailPassword } from './LoginManager';
+
 import Navigation from '../Shareable/Navigation/Navigation';
 
 const Login = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
     const [newUser, setNewUser] = useState(false);
-
-    const [loggedInUser, setLoggedInUser] = useContext(userContext);
-
+    const [error, setError] = useState({})
     const [user, setUser] = useState({
         isSignIn: false,
         name: "",
@@ -53,7 +54,7 @@ const Login = () => {
             createUserWithEmailPassword(user.firstName, user.lastName, user.email, user.password)
                 .then(res => {
                     handleResponse(res, false)
-                    console.log(res.error)
+                    console.log(res)
                 })
         }
         if (!newUser && user.email && user.password) {
@@ -62,10 +63,12 @@ const Login = () => {
                     setUser(res)
                     setLoggedInUser(res)
                     history.replace(from);
+                   
                 })
         }
         // e.preventDefault();
     }
+    console.log(user)
     const handleResponse = (res, redirect) => {
         setUser(res);
         setLoggedInUser(res);
@@ -92,13 +95,13 @@ const Login = () => {
         }
 
     }
-
     const { register, errors, handleSubmit } = useForm();
+
     const onSubmit = data => console.log(data);
     return (
         <React.Fragment>
             <>
-            <Navigation></Navigation>
+                <Navigation></Navigation>
                 <div className="container mt-5">
                     <div className="row d-flex justify-content-center align-items-center">
                         <div className="col-md-5 user-account m-3">
@@ -111,7 +114,7 @@ const Login = () => {
                                         newUser && "Create an account"
                                     }
                                 </h3>
-                                <form onSubmit={handleSubmit(onSubmit)}>
+                                <form>
                                     {
                                         newUser && <div>
 
@@ -138,7 +141,7 @@ const Login = () => {
                                             </div>
                                         </div>
                                     }
-                                    <input type="submit" className="input-field btn brand-btn" onClick={() => handleSubmitted()} value={newUser ? 'Sign up' : 'Login'} />
+                                    <input type="submit" className="input-field btn brand-btn" value={newUser ? 'Sign up' : 'Login'} />
                                     {
                                         newUser && <p>Already have an account ? <span onClick={() => setNewUser(!newUser)}> Login </span> </p>
                                     }
@@ -146,17 +149,13 @@ const Login = () => {
                                         !newUser && <p>Don't have an account ? <span onClick={() => setNewUser(!newUser)}> Create an account</span> </p>
                                     }
                                 </form>
-                                {/* <p>{user.error}</p>
-                            <p> {user.name}</p> */}
-                                {
-                                    user.success && <p>{newUser ? "Registration" : "loged in"} successfully</p>
-                                }
+
                             </div>
                             <div className="other-signIn-method">
                                 <div className="facebook">
                                     <img src={fbIcon} className="float-left" alt="" />
                                     <div className="btn text-center">
-                                        <button onClick={fbSignIn}>Continue with facebook</button>
+                                        <button onClick={fbSignIn} >Continue with facebook</button>
                                     </div>
                                 </div>
                                 <div className="google">

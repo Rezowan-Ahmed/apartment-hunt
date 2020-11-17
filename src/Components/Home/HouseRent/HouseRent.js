@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FakeData from '../../../FakeData'
 import HouseRentCard from '../HouseRentCard/HouseRentCard';
 const HouseRent = () => {
-    const [houseRent, setHouseRent] = useState(FakeData);
-    console.log(houseRent)
+    const [houseRent, setHouseRent] = useState([]);
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        fetch('http://localhost:5000/loadHouse')
+            .then(res => res.json())
+            .then(data => {
+                setHouseRent(data)
+                setLoading(true);
+            })
+    }, [])
     return (
         <React.Fragment>
             <div className="container text-center mt-5">
@@ -13,7 +21,7 @@ const HouseRent = () => {
 
                 <div className="row m-3 pt-5">
                     {
-                        houseRent.map(data => <HouseRentCard key={data.id} houseData={data} ></HouseRentCard>)
+                        houseRent.map(data => <HouseRentCard key={data._id} houseData={data} ></HouseRentCard>)
                     }
                 </div>
             </div>

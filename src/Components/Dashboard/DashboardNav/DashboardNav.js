@@ -14,8 +14,8 @@ const DashboardNav = () => {
         <Navbar bg="white" variant="light">
             <Navbar.Brand className="ml-5" href="#home"> <Link to="/home"><img style={{ height: '60px' }} src={logo} alt="" /></Link> </Navbar.Brand>
             <Nav className="ml-auto mr-4">
-                <NavDropdown title={loggedInUser.name} id="collasible-nav-dropdown" className="mr-5 pr-5">
-                    <NavDropdown.Item className="text-center mb-2"><img style={{ height: '60px', width: '60px', borderRadius: '50%' }} src={loggedInUser.photo} alt="" /></NavDropdown.Item>
+                <NavDropdown title={loggedInUser.displayName} id="collasible-nav-dropdown" className="mr-5 pr-5">
+                    <NavDropdown.Item className="text-center mb-2"><img style={{ height: '60px', width: '60px', borderRadius: '50%' }} src={loggedInUser.photoURL} alt="" /></NavDropdown.Item>
                     <NavDropdown.Item className="text-center" href="#action/3.1"><Link className="text-decoration-none text-secondary font-weight-bold" to="/home"><FontAwesomeIcon icon={faHome} className="mr-2" /> Home </Link></NavDropdown.Item>
                     <NavDropdown.Item className="text-center" href="#action/3.2"><FontAwesomeIcon icon={faUserCog} className="mr-2" /> Setting</NavDropdown.Item>
                     <NavDropdown.Item className="text-center" href="#action/3.3" onClick={handleSignOut} ><FontAwesomeIcon icon={faSignOutAlt} className="mr-2" /> Logout</NavDropdown.Item>

@@ -1,6 +1,5 @@
-import firebase from 'firebase/app'
+import firebase from "firebase/app";
 import "firebase/auth";
-import { useContext } from "react";
 import firebaseConfig from '../../firebase.config';
 
 export const createLoginFreamwork = () => {
@@ -21,7 +20,7 @@ export const handleGoogleSignIn = () => {
             return user;
         })
         .catch(error => {
-            return(error);
+            return error;
         })
 }
 
@@ -34,10 +33,7 @@ export const handleFbSignIn = () => {
         user.success = true;
         return user;
     }).catch(function (error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        var email = error.email;
-        var credential = error.credential;
+        return error
     });
 }
 

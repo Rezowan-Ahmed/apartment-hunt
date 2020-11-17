@@ -13,12 +13,16 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import Booklist from './Components/Dashboard/Booklist/Booklist';
 import AddHouse from './Components/Dashboard/AddHouse/AddHouse';
-import MyRent from './Components/MyRent/MyRent';
-
+import MyRent from './Components/Dashboard/MyRent/MyRent'
+import HouseDetails from './Components/HouseDetails/HouseDetails';
 
 export const userContext = createContext();
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useState({
+    name: "",
+    password: "",
+    email: "",
+  })
 
   return (
     <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -33,19 +37,22 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-            <Route path="/dashboard">
+          <Route path="/house/:houseID">
+            <HouseDetails />
+          </Route>
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route path="/admin/booklist">
+          </PrivateRoute>
+          <PrivateRoute path="/admin/booklist">
             <Booklist />
-          </Route>
-          <Route path="/admin/addhouse">
+          </PrivateRoute>
+          <PrivateRoute path="/admin/addhouse">
             <AddHouse />
-          </Route>
-          <Route path="/admin/myRent">
+          </PrivateRoute>
+          <PrivateRoute path="/admin/myRent">
             <MyRent />
-          </Route>
-          
+          </PrivateRoute>
+
           <Route path="*">
             <NotFound />
           </Route>

@@ -3,27 +3,25 @@ import { Card } from 'react-bootstrap';
 import banner from '../../../images/images/Rectangle 394.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faMapMarkerAlt, faToiletPaperSlash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
-const HouseRentCard = (props) => {
-    const { img } = props.houseData;
-    console.log(img)
+const HouseRentCard = ({ houseData }) => {
     return (
         <div className="col-md-4">
-            <Card className="m-3">
-                <Card.Img variant="top" src={banner} />
+            <Card className="mt-3">
+                <Card.Img variant="top" style={{minHeight: '220px'}} className="img-fluid" src={`data:image/png;base64,${houseData.houseImage.img}`} />
                 <Card.Body>
-                    <Card.Title className="text-left brand-text"><h4>Appoinment Hunt</h4></Card.Title>
+                    <Card.Title className="text-left brand-text"><h4>{ houseData.serviceTitle }</h4></Card.Title>
                     <Card.Text className="text-left">
-                        <p> <FontAwesomeIcon className="text-left mr-2" icon={faMapMarkerAlt} />
-                       Nasirabad, Chittagong </p>
+                        <p> <FontAwesomeIcon className="text-left mr-2" icon={faMapMarkerAlt} /> {houseData.location} </p>
                         <div className="more-details d-flex justify-content-between">
-                            <p> <FontAwesomeIcon className="text-left mr-2" icon={faBed} /> 3 Bedrooms </p>
-                            <p> <FontAwesomeIcon className="text-left mr-2" icon={faToiletPaperSlash} /> 2 Birthrooms </p>
-                       </div>
-                       <div className="d-flex justify-content-between">
-                           <h2 className="brand-text">$ 250 </h2>
-                           <button className="btn brand-btn">View Details</button>
-                       </div>
+                            <p> <FontAwesomeIcon className="text-left mr-2" icon={faBed} /> Bedroom {houseData.bedroom} </p>
+                            <p> <FontAwesomeIcon className="text-left mr-2" icon={faToiletPaperSlash} /> Birthroom {houseData.birthroom} </p>
+                        </div>
+                        <div className="row justify-content-between p-2">
+                            <h2 className="brand-text"> $ {houseData.price} </h2>
+                            <Link to={`/house/${houseData._id}`}><button className="btn brand-btn">View Details</button></Link>
+                        </div>
                     </Card.Text>
 
                 </Card.Body>
