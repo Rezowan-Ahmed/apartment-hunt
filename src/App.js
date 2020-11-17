@@ -40,18 +40,18 @@ function App() {
           <Route path="/house/:houseID">
             <HouseDetails />
           </Route>
-          <PrivateRoute path="/dashboard">
+          <Route path="/dashboard">
             <Dashboard />
-          </PrivateRoute>
-          <PrivateRoute path="/admin/booklist">
+          </Route>
+          <Route path="/admin/booklist">
             <Booklist />
-          </PrivateRoute>
-          <PrivateRoute path="/admin/addhouse">
+          </Route>
+          <Route path="/admin/addhouse">
             <AddHouse />
-          </PrivateRoute>
-          <PrivateRoute path="/admin/myRent">
+          </Route>
+          <Route path="/admin/myRent">
             <MyRent />
-          </PrivateRoute>
+          </Route>
 
           <Route path="*">
             <NotFound />
